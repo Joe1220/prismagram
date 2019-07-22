@@ -6,6 +6,7 @@
   "author": "jsh901220 <joe1220@daum.net>",
   "license": "MIT",
   "scripts": {
+    "deploy": "prisma deploy",
     "dev": "nodemon --exec babel-node src/server.js"
   },
   "dependencies": {
