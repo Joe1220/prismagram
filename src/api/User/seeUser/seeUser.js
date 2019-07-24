@@ -4,9 +4,9 @@ import { prisma } from "../../../../generated/prisma-client";
   Query: {
     seeUser: async(_, args) => {
       const { id } = args;
-      const userProfile = prisma.user({ id });
+      const user = prisma.user({ id });
       const posts = prisma.user({ id }).posts()
-      return { userProfile, posts }
+      return { user, posts }
     }
   }
 };

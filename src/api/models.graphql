@@ -61,6 +61,6 @@ type Room {
 }
 
 type UserProfile {
-  user: User!
+  user: User
   posts: [Post!]!
 }
