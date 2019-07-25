@@ -8,5 +8,6 @@ enum ACTIONS {
     id: String!
     caption: String
     location: String
-  ): Post
+    action: ACTIONS!
+  ): Post!
 }
