@@ -6,7 +6,6 @@ import { prisma } from "../../../../generated/prisma-client";
     requestSecret: async (_, args, { request }) => {
       const { email } = args;
       const loginSecret = generateSecret();
-      console.log('why??:', args)
       try {
         await sendSecretMail(email, loginSecret)
         await prisma.updateUser({ data: { loginSecret }, where: { email } });
