@@ -11,7 +11,8 @@ type User {
   posts: [Post!]! @relation(name: "PostsOfUser", onDelete: CASCADE)
   likes: [Like!]! @relation(name: "LikesOfUser", onDelete: CASCADE)
   comments: [Comment!]! @relation(name: "CommentsOfUser", onDelete: CASCADE)
-  rooms: [Room!]!
+  messages: [Message!]! @relation(name: "From", onDelete: CASCADE)
+  rooms: [Room!]! @relation(name: "RoomsOfUser", onDelete: CASCADE)
   loginSecret: String
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
@@ -56,8 +57,8 @@ type File {
 
 type Room {
   id: ID! @id 
-  participants: [User!]!
-  messages: [Message!]!
+  participants: [User!]! @relation(name: "RoomsOfUser")
+  messages: [Message!]! @relation(name: "MessagesOfRoom", onDelete: CASCADE)
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
@@ -67,7 +68,7 @@ type Message {
   text: String!
   from: User! @relation(name: "From")
   to: User! @relation(name: "To")
-  room: Room!
+  room: Room! @relation(name: "MessagesOfRoom")
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
